@@ -115,8 +115,6 @@ var displayCurrent = function (query, userInput) {
 // }
 
 
-// REVISE THIS LATER TO INCLUDE the above MODAL FOR EMPTY FORM
-
 
 
 closingSpan.addEventListener('click', closeBtnClkHandler);
