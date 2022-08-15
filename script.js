@@ -213,18 +213,18 @@ var displayWeather = function (data, query) {
 // let forecastResultsEl = document.querySelector('#fiver-container');
 
 
-var getCoordinates = function() {
-    var geocodeApiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + query + '&limit=3&appid=30d6578d03fd53edd07b515697cb941a';
-    fetch(geocodeApiUrl)
-    .then(function (response) {
-        if (response.ok) {
-            console.log(response);
-            return response.json();
+// var getCoordinates = function() {
+//     var geocodeApiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + query + '&limit=3&appid=30d6578d03fd53edd07b515697cb941a';
+//     fetch(geocodeApiUrl)
+//     .then(function (response) {
+//         if (response.ok) {
+//             console.log(response);
+//             return response.json();
 
-        }
-    })
+//         }
+//     })
 
-}
+// }
 
 // let history = JSON.parse(localStorage.getItem(query)) || [];
 console.log(history);
