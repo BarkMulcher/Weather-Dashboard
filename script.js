@@ -95,8 +95,10 @@ var getWeatherResults = function(query) {
     
             .then(function (data) {
                 console.log(data);
-                var lat = data[0].lat;
-                var lon = data[0].lon;
+                var lat = data.lat;
+                var lon = data.lon;
+                //var lat = data[0].lat;
+                //var lon = data[0].lon;
             
     var forecastApiUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly&appid=30d6578d03fd53edd07b515697cb941a&units=imperial';
 
