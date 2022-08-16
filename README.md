@@ -9,3 +9,8 @@
 ## Deployed Site URL
 
 https://BarkMulcher.github.io/Weather-Dashboard
+-----------------------------------------------
+## Inline Screenshot 
+![screenshot](https://github.com/BarkMulcher/Weather-Dashboard/blob/main/wthrdshbrdscreenshot.png)
+
+
