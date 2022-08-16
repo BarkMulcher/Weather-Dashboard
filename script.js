@@ -65,9 +65,7 @@ var clickOffCloseModal = function(event) {
         
 }
 
-var saveSearch = function () {
-    localStorage.setItem('history', JSON.stringify(history));
-} 
+// 
 
 var getLatLon = function(query) {
     
@@ -209,8 +207,6 @@ var displayWeather = function (data, query) {
         forecastResultsEl.appendChild(forecastEl);
         }
 }      
-// let forecastHeadline = document.querySelector('#forecast');
-// let forecastResultsEl = document.querySelector('#fiver-container');
 
 
 var getCoordinates = function() {
@@ -226,6 +222,7 @@ var getCoordinates = function() {
 
 }
 
+// None of below works:
 // let history = JSON.parse(localStorage.getItem(query)) || [];
 console.log(history);
 // const searchHistory = document.getElementById('search-history-buttons');
@@ -257,4 +254,35 @@ closingSpan.addEventListener('click', closeBtnClkHandler);
 submitBtn.addEventListener('click', buttonClickHandler);
 window.addEventListener('click', clickOffCloseModal);
     
-  
+// Tested - not work :()
+
+// var counter = 0;
+
+// let citiesSearched = document.querySelector('#cities')
+var saveSearch = function (query) {
+        // var history = document.createElement('button');
+    //     history.setAttribute('id', query);
+    //     history.className = 'search button';
+    //     history.textContent = query;
+    //     history.addEventListener('click', function() {
+    //         displayWeather(this.id);
+    //     });
+    //     citiesSearched.appendChild(savedCity);
+    //     saveList.push(query);
+        //  localStorage.setItem('saveList', JSON.stringify(saveList));
+    //     counter++;
+    } 
+    
+    // var loadSaved = function() {
+    //     saveList = JSON.parse(localStorage.getItem('saveList')) || [];
+    //         for (i=0; i < saveList.length; i++) {
+    //             var history = document.createElement('button');
+    //             history.setAttribute('id', saveList[i]);
+    //             history.className = 'search button';
+    //             history.textContent = saveList[i];
+    //             history.addEventListener('click', function() {
+    //                 displayWeather(this.id);
+    //             });
+    
+    //         }
+    // }
