@@ -1,6 +1,7 @@
 // api URL example: api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=30d6578d03fd53edd07b515697cb941a
 
-let history = [];
+// let history = [];
+var saveList = [];
 let queryFormEl = document.querySelector('#search-form');
 let queryInputEl = document.querySelector('#search-input');
 let weatherResultsEl = document.querySelector('#current-conditions-container');
@@ -46,11 +47,11 @@ function buttonClickHandler(event) {
         return;
     } else {
         getWeatherResults(query);
-        history.unshift({query});
+        // history.unshift({query});
         queryInputEl.value = '';
     }
-    saveSearch();
-    searchHistory();
+    // saveSearch();
+    searchHistory(query);
 }
  // modal close fn
 var closeBtnClkHandler = function() {
@@ -87,7 +88,7 @@ var getWeatherResults = function(query) {
         fetch(geocodeApiUrl + query + '&limit=3&appid=' + apiKey)
         .then(function (response) {
             if (response.ok) {
-                console.log(response);
+                // console.log(response);
                 return response.json();
             }})
     
@@ -116,7 +117,9 @@ var getWeatherResults = function(query) {
 // display current weather 
 var displayWeather = function (data, query) {
     weatherResultsEl.textContent = ' ';
-    userInputEl.textContent = query;
+    var cityName = query[0].toUpperCase() + query.substring(1);
+    userInputEl.textContent = cityName;
+    saveSearch(cityName);
     query = document.querySelector("#search-input").value;
     weatherResultsEl.textContent = '';
 
@@ -134,12 +137,12 @@ var displayWeather = function (data, query) {
 
     // temperature
     var currentTempEl = document.createElement('span');
-    currentTempEl.textContent = 'Current Temperature: ' + data.current.temp + ' degrees F'
+    currentTempEl.textContent = 'Current Temperature: ' + data.current.temp + ' °F'
     currentTempEl.classList = 'list-group-item';
 
     // humidity section:
     var currentHumidityEl = document.createElement('span');
-    currentHumidityEl.textContent = 'Humidity: ' + data.current.humidity + '%';
+    currentHumidityEl.textContent = 'Humidity: ' + data.current.humidity + '% Humidity';
     currentHumidityEl.classList = 'list-group-item';
 
     // wind span
@@ -200,7 +203,7 @@ var displayWeather = function (data, query) {
         forecastEl.appendChild(forecastTempEl);
          
         var forecastHumidityEl = document.createElement('span');
-        forecastHumidityEl.textContent = dailyForecast.humidity + '%';
+        forecastHumidityEl.textContent = dailyForecast.humidity + '% Humidity';
         forecastHumidityEl.classList = 'card-body text-center';
         forecastEl.appendChild(forecastHumidityEl);
 
@@ -232,11 +235,13 @@ var searchHistory = function(searchHistory) {
 
      // make buttons
     var searchHistoryEl = document.createElement('button');
+    searchHistory = searchHistory[0].toUpperCase() + searchHistory.substring(1);
     searchHistoryEl.textContent = searchHistory;
     searchHistoryEl.classList = 'w-100 btn-light border d-flex p-2';
     searchHistoryEl.setAttribute('city-input', searchHistory);
     searchHistoryEl.setAttribute('type', 'submit');
-
+    console.log(searchHistoryEl);
+    searchHistoryEl.addEventListener('click', searchHistoryBtnHandler);
     searchHistoryBtnsEl.prepend(searchHistoryEl);
 }
 
@@ -259,18 +264,11 @@ window.addEventListener('click', clickOffCloseModal);
 // var counter = 0;
 
 // let citiesSearched = document.querySelector('#cities')
+
 var saveSearch = function (query) {
-        // var history = document.createElement('button');
-    //     history.setAttribute('id', query);
-    //     history.className = 'search button';
-    //     history.textContent = query;
-    //     history.addEventListener('click', function() {
-    //         displayWeather(this.id);
-    //     });
-    //     citiesSearched.appendChild(savedCity);
-    //     saveList.push(query);
-        //  localStorage.setItem('saveList', JSON.stringify(saveList));
-    //     counter++;
+        saveList.push(query);
+        localStorage.setItem('saveList', JSON.stringify(saveList));
+        // counter++;
     } 
     
     // var loadSaved = function() {
